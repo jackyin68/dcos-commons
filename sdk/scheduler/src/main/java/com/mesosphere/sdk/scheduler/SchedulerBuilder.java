@@ -485,7 +485,7 @@ public class SchedulerBuilder {
         // nodes, then we want to check that the prior n nodes had successfully deployed.
         ServiceSpec lastServiceSpec = configStore.fetch(configStore.getTargetConfig());
         Optional<Plan> deployPlan = getDeployPlan(
-            getPlans(stateStore, configStore, lastServiceSpec, namespace, yamlPlans));
+            getPlans(stateStore, configStore, lastServiceSpec, namespace, new HashMap<>()));
         if (deployPlan.isPresent()) {
           logger.info("Previous deploy plan state: {}", deployPlan.get().toString());
           if (deployPlan.get().isComplete()) {
